@@ -120,9 +120,12 @@
     // Extract code from URL params
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
+    const fromName = params.get('from') || 'Someone';
+    const budgetName = params.get('budget') || 'a shared budget';
 
     if (code) {
       document.getElementById('invite-code').textContent = code;
+      document.querySelector('.subtitle').textContent = `${fromName} wants you to join "${budgetName}" on Smart Budget.`;
       
       // Android intent URL (works even without custom scheme registered)
       const deepLink = `smartbudget://invite/${code}`;
